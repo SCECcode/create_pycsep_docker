@@ -17,7 +17,7 @@ This repository contains scripts for installing pycsep in a Docker container tha
 5. [Credits](#credit)
 6. [License](#license)
 
-## pyCSEP Installation Options
+## create_pyCSEP_docker Repository Files
 
 The file in this repository include the following:
 
@@ -30,18 +30,6 @@ current environment so that these are not hardcoded into build image script. The
 and the users environment. This prints a url to the screen where the user can access the pycsep_juypter notebook running in the container. This retrieves the pycsep image from dockerhub if it is note found locally on the users docker environment on their computer.
 * clean.sh - this invokes a docker cleanup script which removes all the local images and containers and frees up space
 on the users computer.
-
-*Usage:
-A Docker container created from this pycsep requires that a subdirectory, called "target" exists where the docker
-pycsep is invoked. This ./target subdirectory will be mounted in the image, and output results will be written
-there, so they are exchanged with the docker image.
-
-*Command to run notebook inside container is:
-The run_pycsep_jup.py script, starts the docker image with commands that will open a ports between the container and the host computer. It starts the Docker container with a command like this: docker run -it -p 8888:8888 image:version
-
-The Dockefile contains instructions to start the jupyter notebook with the following commands, inside the Container : jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
-
-When the docker images starts, it prints a URL in the terminal window. The user then can copy that url and paste it into a browser on their computer, and jupyter notebook, with pycsep installed is available and accessible in their browser. The inputs and results are exchanged between the notebook and the users computer through the a subdirectory called ./target which is directory that is accessible both inside the container, and on the users computer.
 
 ## Usage
 To run a pyCSEP Docker image, the user should start a docker client on their current system. They should open a terminal window on their system and select a directory where they want to run pyCSEP. Then, they should create a subdirectory called "target". This directory will be used to transfer files from the Docker container to and from the user's computer. Then, users invoke a "docker run ..." command to start the image. If the image is not available on their local system, it will be downloaded from Dockerhub.
